@@ -19,6 +19,7 @@ class Downloader:
             self.LoadPics()
 
     def LoadPics(self):
+        """обработка ссылки"""
         self.__GetLinks()
         self.__DownloadPics()
 
@@ -58,6 +59,7 @@ class Downloader:
 
 
 def Resive(ch, meth, prop, body: [bytes]):
+    """обработчик прихода сообщения из rmq"""
     downloader = Downloader(body.decode("utf-8"))
     del downloader
 

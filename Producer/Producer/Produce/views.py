@@ -8,6 +8,7 @@ conn_params=pika.ConnectionParameters('localhost')
 
 
 class URLView(APIView):
+    """вью для получения юрл"""
     def post(self, request):
         data = JSONParser().parse(request)
         serial = URLSer(data=data)
@@ -18,6 +19,7 @@ class URLView(APIView):
 
 
 def SendMessage(url: str):
+    """отправка сообщения в кагал"""
     conn = pika.BlockingConnection(conn_params)
     channel = conn.channel()
     channel.queue_declare('Messages')
